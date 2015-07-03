@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:datasource="http://www.message.com/schema/message-datasource"
+	xmlns:jdbc="http://www.message.com/schema/message-jdbc"
+	xsi:schemaLocation=" 
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.message.com/schema/message-datasource
+  http://www.message.com/schema/message-datasource/message-datasource-1.0.xsd
+  http://www.message.com/schema/message-jdbc
+  http://www.message.com/schema/message-jdbc/message-jdbc-1.0.xsd">
+
+	<!-- 数据源，这里的值就是上文中的数据源名称，以后在spring上下文中使用数据源的bean对象名称即为此名称 -->
+	<datasource:rdbms name="cc" />
+	<jdbc:jdbc dataSource="cc" basePackage="knowledge" useFlyway="false"
+		dbType="Oracle">
+		<!-- <jdbc:convert key="solar.base.enums.DeleteFlag" value="solar.base.converts.DeleteFlagConvert" /> -->
+	</jdbc:jdbc>
+</beans>

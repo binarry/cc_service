@@ -2,19 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:datasource="http://www.message.com/schema/zsmartcc-datasource"
-	xmlns:jdbc="http://www.message.com/schema/zsmartcc-jdbc"
+xmlns:mybatis="http://www.message.com/schema/zsmartcc-mybatis"
 	xsi:schemaLocation=" 
   http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
   http://www.message.com/schema/zsmartcc-datasource
   http://www.message.com/schema/zsmartcc-datasource/zsmartcc-datasource-1.0.xsd
-  http://www.message.com/schema/zsmartcc-jdbc
-  http://www.message.com/schema/zsmartcc-jdbc/zsmartcc-jdbc-1.0.xsd">
+  http://www.message.com/schema/zsmartcc-mybatis
+  http://www.message.com/schema/zsmartcc-mybatis/zsmartcc-mybatis-1.0.xsd">
 
 	<!-- 数据源，这里的值就是上文中的数据源名称，以后在spring上下文中使用数据源的bean对象名称即为此名称 -->
 	<datasource:rdbms name="cc" />
-	<jdbc:jdbc dataSource="cc" basePackage="knowledge" useFlyway="false"
-		dbType="Oracle">
-		<!-- <jdbc:convert key="solar.base.enums.DeleteFlag" value="solar.base.converts.DeleteFlagConvert" /> -->
-	</jdbc:jdbc>
+<mybatis:mybatis dataSource="cc" basePackage="com.ztesoft.zsmart.cc"
+			dbType="Oracle" />
+	
 </beans>

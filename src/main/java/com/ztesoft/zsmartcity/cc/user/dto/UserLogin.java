@@ -26,6 +26,10 @@ public class UserLogin implements Serializable{
 		this.password = password;
 	}
 	
+	public String toString (){
+		return "userCode="+userCode+"	password="+password;
+	}
+	
 	
 	
 	

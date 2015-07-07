@@ -2,10 +2,16 @@ package com.ztesoft.zsmartcity.cc.user.dto;
 
 import java.io.Serializable;
 
+import com.ztesoft.zsmartcc.validate.annotations.NotNull;
+import com.ztesoft.zsmartcc.validate.annotations.Password;
+import com.ztesoft.zsmartcc.validate.annotations.ValidateEntity;
+@ValidateEntity
 public class UserLogin implements Serializable{
 	
+	@NotNull
 	private String userCode;
 	
+	@NotNull
 	private String password;
 
 	
@@ -24,10 +30,6 @@ public class UserLogin implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public String toString (){
-		return "userCode="+userCode+"	password="+password;
 	}
 	
 	

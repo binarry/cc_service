@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.ztesoft.zsmartcc.config.MessageUtils;
+import com.ztesoft.zsmartcc.validate.core.NeedValidate;
 import com.ztesoft.zsmartcity.cc.user.dao.IUserDao;
 import com.ztesoft.zsmartcity.cc.user.dto.UserInfo;
 import com.ztesoft.zsmartcity.cc.user.dto.UserLogin;
@@ -25,6 +27,7 @@ public class UserService implements IUserService{
 	@Resource
 	private IUserDao userDao;
 	
+	@NeedValidate
 	public UserLoginResp login(UserLogin login){
 		log.debug("input parameter:"+login.toString());
 		UserLoginResp resp = new UserLoginResp();
@@ -34,9 +37,11 @@ public class UserService implements IUserService{
 		UserInfo userInfo = userDao.queryUserInfo(user);
 		if(userInfo !=null){
 			resp.setRespCode(LOGIN_SUCESS);
+			resp.setMsg(MessageUtils.getMessage(LOGIN_SUCESS));
 			resp.setUserInfo(userInfo);
 		}else{
 			resp.setRespCode(LOGIN_FAIL);
+			resp.setMsg(MessageUtils.getMessage(LOGIN_FAIL));
 		}
 		log.debug("output parameter:"+resp.toString());
 		return resp;

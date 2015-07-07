@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
      <param-name>paramsHome</param-name>
-     <param-value>D:\wkspace\cc_servcie\src\main\resources\cosmos-configs</param-value>
+     <param-value>classpath:/cosmos-configs</param-value>
  </context-param>
   <context-param>
     <param-name>contextConfigLocation</param-name>

@@ -35,5 +35,9 @@ public class UserLoginResp implements Serializable{
 	}
 	
 	
+	public String toString(){
+		return "respCode = "+ respCode +"msg ="+msg;
+	}
+	
 
 }

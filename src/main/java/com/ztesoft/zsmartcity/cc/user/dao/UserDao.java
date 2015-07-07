@@ -1,7 +1,6 @@
 package com.ztesoft.zsmartcity.cc.user.dao;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,12 +17,14 @@ public class UserDao extends AbstractDAO implements IUserDao {
 	}
 
 
-	private static final String QUERY_USER_INFO = "select user_name,user_code,pwd from CCS_USER t where user_code= :user_code and pwd= :pwd";
 	
-	public  UserInfo getUserInfo(UserInfo user){
-		Map params = new Hashtable();
-		
-		return (UserInfo)super.selectOne("queryUser", user);
+	public  UserInfo queryUserInfo(UserInfo user){
+	
+		List list = super.findAll("queryUser", user);
+		if(list!=null&&list.size()>0){
+			return (UserInfo)list.get(0);
+		}
+		return null;
 		
 	}
 

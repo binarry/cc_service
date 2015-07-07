@@ -14,6 +14,10 @@ import com.ztesoft.zsmartcity.cc.user.dto.UserLoginResp;
 @Service("userService")
 public class UserService implements IUserService{
 	
+	private static final String LOGIN_SUCESS  = "0000";
+	
+	private static final String LOGIN_FAIL  = "0001";
+	
 	final static  Logger log = LoggerFactory.getLogger(UserService.class);
 	
 	
@@ -22,18 +26,19 @@ public class UserService implements IUserService{
 	private IUserDao userDao;
 	
 	public UserLoginResp login(UserLogin login){
-		log.debug("enter method login:"+login.toString());
+		log.debug("input parameter:"+login.toString());
 		UserLoginResp resp = new UserLoginResp();
 		UserInfo user = new UserInfo();
 		user.setUserCode(login.getUserCode());
 		user.setPwd(login.getPassword());
-		UserInfo userInfo = userDao.getUserInfo(user);
+		UserInfo userInfo = userDao.queryUserInfo(user);
 		if(userInfo !=null){
-			resp.setRespCode("0000");
+			resp.setRespCode(LOGIN_SUCESS);
 			resp.setUserInfo(userInfo);
 		}else{
-			resp.setRespCode("0001");
+			resp.setRespCode(LOGIN_FAIL);
 		}
+		log.debug("output parameter:"+resp.toString());
 		return resp;
 	}
 

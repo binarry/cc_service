@@ -6,6 +6,6 @@ import com.ztesoft.zsmartcity.cc.user.dto.UserInfo;
 
 public interface IUserDao {
 	
-	public  UserInfo getUserInfo(UserInfo user);
+	public  UserInfo queryUserInfo(UserInfo user);
 
 }

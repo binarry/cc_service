@@ -6,7 +6,7 @@
 	http://code.alibabatech.com/schema/dubbo
 	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">       
 	<dubbo:application name="smart-service"></dubbo:application>
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" /> 
+    <dubbo:registry protocol="zookeeper" address="10.45.6.135:2181" /> 
 	
 	<dubbo:protocol name="dubbo" port="20880" ></dubbo:protocol>
 	<dubbo:service interface="com.ztesoft.zsmartcity.cc.user.service.IUserService" version="1.0" ref="userService" />

@@ -20,7 +20,7 @@ public class UserService implements IUserService{
 	
 	private static final String LOGIN_FAIL  = "0001";
 	
-	final static  Logger log = LoggerFactory.getLogger(UserService.class);
+	final static  Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	
 	
@@ -29,7 +29,9 @@ public class UserService implements IUserService{
 	
 	@NeedValidate
 	public UserLoginResp login(UserLogin login){
-		log.debug("input parameter:"+login.toString());
+		if(logger.isDebugEnabled()){
+			logger.debug("input parameters:"+login.toString());
+		}
 		UserLoginResp resp = new UserLoginResp();
 		UserInfo user = new UserInfo();
 		user.setUserCode(login.getUserCode());
@@ -43,7 +45,9 @@ public class UserService implements IUserService{
 			resp.setRespCode(LOGIN_FAIL);
 			resp.setMsg(MessageUtils.getMessage(LOGIN_FAIL));
 		}
-		log.debug("output parameter:"+resp.toString());
+		if(logger.isDebugEnabled()){
+			logger.debug("output parameters:"+resp.toString());
+		}
 		return resp;
 	}
 
